@@ -16,6 +16,8 @@
 		<div>
 			<label>Họ tên</label>
 			<form:input name="hoTen" path="hoTen" />
+			<form:errors path="hoTen" class="text-danger"
+				style="color: red;" />
 		</div>
 		<div>
 			<label>Địa chỉ</label>

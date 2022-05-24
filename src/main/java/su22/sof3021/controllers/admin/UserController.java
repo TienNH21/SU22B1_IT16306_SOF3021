@@ -1,6 +1,9 @@
 package su22.sof3021.controllers.admin;
 
+import javax.validation.Valid;
+
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -19,8 +22,15 @@ public class UserController {
 	}
 
 	@PostMapping("store")
-	public String store(@ModelAttribute("user") User user)
-	{
+	public String store(
+		@Valid @ModelAttribute("user") User user,
+		BindingResult result
+	) {
+		if (result.hasErrors()) {
+			System.out.println("Form ko hợp lệ");
+		} else {
+			System.out.println("Form hợp lệ");			
+		}
 		return "admin/users/create";
 	}
 }
