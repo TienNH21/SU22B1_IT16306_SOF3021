@@ -5,6 +5,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 import lombok.Data;
@@ -12,6 +14,12 @@ import lombok.Data;
 @Data
 @Entity
 @Table(name="accounts")
+@NamedQueries(
+	@NamedQuery(
+		name="Account.findByEmail",
+		query="SELECT acc FROM Account acc WHERE acc.email LIKE :email"
+	)
+)
 public class Account {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
