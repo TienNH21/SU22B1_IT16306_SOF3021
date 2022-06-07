@@ -30,6 +30,7 @@ public class HelloController {
 			defaultValue="IT16306"
 		) String hoTen
 	) {
+		System.out.println("HelloController@hello");
 		model.addAttribute("message", hoTen);
 		return "hello";
 	}
